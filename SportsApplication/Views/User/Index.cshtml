@@ -1,0 +1,73 @@
+﻿@model SportsApplication.Models.LoginModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ENROLLMENT</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="../../Content/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!------ Include the above in your HEAD tag ---------->
+    @using (Html.BeginForm("Index", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container register">
+
+            @if (ViewBag.Message != null)
+            {
+                <p class="alert alert-success" id="errorMessage">@ViewBag.Message</p>
+            }
+
+            <div class="row">
+
+                <div class="col-md-9 register-right">
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="../User/Index" role="tab" aria-controls="profile" aria-selected="false">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="../User/Register" role="tab" aria-controls="home" aria-selected="true">Register</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                           
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(e => e.Email, new { @class = "form-control", placeholder = "Your Email *" })
+                                        @Html.ValidationMessageFor(e => e.Email)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.PasswordFor(e => e.Password, new { id = "password", @class = "form-control", placeholder = "Password *" })
+                                        <span id="result"></span>
+
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <input type="submit" class="btnLogin" value="Login" />
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

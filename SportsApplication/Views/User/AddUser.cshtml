@@ -1,0 +1,93 @@
+﻿@model SportsApplication.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="../../Content/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <!------ Include the above in your HEAD tag ---------->
+    @using (Html.BeginForm("AddUser", "User", FormMethod.Post))
+    {
+        <div class="container register">
+            <div class="row">
+               
+                <div class="col-md-9 register-right">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Coach">Retrun to List</a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                           
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(e => e.FirstName, new { @class = "form-control", placeholder = "First Name *" })
+                                        @Html.ValidationMessageFor(e => e.FirstName)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(e => e.LastName, new { @class = "form-control", placeholder = "Last Name *" })
+                                        @Html.ValidationMessageFor(e => e.LastName)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(e => e.TotalMatchesPlayed, new { @class = "form-control", placeholder = "Total Matches Played *" })
+                                        @Html.ValidationMessageFor(e => e.TotalMatchesPlayed)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(e => e.Contactnumber, new { @class = "form-control", placeholder = "Your Phone *" })
+                                        @Html.ValidationMessageFor(e => e.Contactnumber)
+
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(e => e.Email, new { @class = "form-control", placeholder = "Your Email *" })
+                                        @Html.ValidationMessageFor(e => e.Email)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.PasswordFor(e => e.Password, new { id = "password", @class = "form-control", placeholder = "Password *" })
+                                        <span id="result"></span>
+                                        @Html.ValidationMessageFor(e => e.Password)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.PasswordFor(e => e.Confirmpwd, new { @class = "form-control", placeholder = "Confirm Password *" })
+                                        @Html.ValidationMessageFor(e => e.Confirmpwd)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(e => e.DateOfBirth, new { @class = "form-control", placeholder = "Your DateOfBirth *" })
+                                        @Html.ValidationMessageFor(e => e.DateOfBirth)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(e => e.Height, new { @class = "form-control", placeholder = "Your Height *" })
+                                        @Html.ValidationMessageFor(e => e.Height)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(e => e.Weight, new { @class = "form-control", placeholder = "Your Weight *" })
+                                        @Html.ValidationMessageFor(e => e.Weight)
+                                    </div>
+                                 
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="submit" class="btnRegister" value="Add User" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+            
+        </div>
+    }
+</body>
+</html>
